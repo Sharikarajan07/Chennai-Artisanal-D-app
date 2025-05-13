@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Box, useToast, ChakraProvider, Spinner, Flex, Text, Center } from '@chakra-ui/react';
 import { initBlockchain } from './utils/blockchain';
 import { ARTISAN_REGISTRY_ADDRESS, CHENNAI_ARTISANAL_NFT_ADDRESS } from './utils/constants';
+import theme from './theme';
 
 // Components
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 // Pages
 import Home from './pages/Home';
@@ -60,32 +62,35 @@ function App() {
   }, [toast]);
 
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Router>
-        <Box minH="100vh">
+        <Box minH="100vh" display="flex" flexDirection="column">
           <Navbar />
-          {loading ? (
-            <Center minH="80vh">
-              <Flex direction="column" align="center">
-                <Spinner size="xl" color="teal.500" mb={4} thickness="4px" />
-                <Text fontSize="lg">Connecting to blockchain...</Text>
-              </Flex>
-            </Center>
-          ) : (
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/marketplace" element={<Marketplace />} />
-              <Route path="/item/:tokenId" element={<NFTDetails />} />
-              <Route path="/create" element={<CreateNFT />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/my-items" element={<Profile />} />
-              <Route path="/admin" element={<Admin />} />
-              <Route path="/get-address" element={<GetAddress />} />
-              <Route path="/artisans" element={<Artisans />} />
-              <Route path="/artisan/:address" element={<ArtisanDetails />} />
-              <Route path="*" element={<Home />} />
-            </Routes>
-          )}
+          <Box flex="1">
+            {loading ? (
+              <Center minH="80vh">
+                <Flex direction="column" align="center">
+                  <Spinner size="xl" color="brand.500" mb={4} thickness="4px" />
+                  <Text fontSize="lg">Connecting to blockchain...</Text>
+                </Flex>
+              </Center>
+            ) : (
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/marketplace" element={<Marketplace />} />
+                <Route path="/item/:tokenId" element={<NFTDetails />} />
+                <Route path="/create" element={<CreateNFT />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/my-items" element={<Profile />} />
+                <Route path="/admin" element={<Admin />} />
+                <Route path="/get-address" element={<GetAddress />} />
+                <Route path="/artisans" element={<Artisans />} />
+                <Route path="/artisan/:address" element={<ArtisanDetails />} />
+                <Route path="*" element={<Home />} />
+              </Routes>
+            )}
+          </Box>
+          <Footer />
         </Box>
       </Router>
     </ChakraProvider>

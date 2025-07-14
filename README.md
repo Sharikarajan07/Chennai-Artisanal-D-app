@@ -13,7 +13,7 @@ A decentralized application for bringing transparency to the local artisanal mar
 ## Technology Stack
 
 - **Blockchain**: Ethereum (Sepolia Testnet)
-- **Smart Contracts**: Solidity
+- **Smart Contracts**: Solidity(contract-oriented language)
 - **Development Framework**: Hardhat
 - **Frontend**: React with Vite
 - **UI Library**: Chakra UI

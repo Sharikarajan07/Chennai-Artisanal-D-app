@@ -1,0 +1,20 @@
+Blockchain: Ethereum (Sepolia Testnet)
+Smart Contracts: Solidity
+Solidity is a contract-oriented language used to implement smart contracts — programs that automatically execute the terms of an agreement. It is statically typed, supports inheritance, libraries, complex user-defined types, and more.
+Created by: Ethereum team (initially proposed by Gavin Wood)
+Influenced by: JavaScript, C++, Python
+ SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract HelloWorld {
+    string public message;
+
+    constructor(string memory _msg) {
+        message = _msg;
+    }
+
+    function updateMessage(string memory _newMsg) public {
+        message = _newMsg;
+    }
+}
+
